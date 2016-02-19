@@ -11,29 +11,55 @@ import java.util.ArrayList;
  *
  * @author fm010
  */
-class Cuenta {
-  private static int CantidadInstancias;
-  private int numero;
-  private String tipo;
-  private double monto;
+class Cuenta implements Comparable {
+  private static int cantidadInstancias;
   private Cliente cte;
   private ArrayList<Movimiento> movimientos;
+  private int numero;
+  private double saldo;
   
-  public Cuenta() {}
+  public Cuenta(double saldop) {
+    numero = ++Cuenta.cantidadInstancias;
+    movimientos = new ArrayList<>();
+    saldo = saldop;
+  }
   
   public String toString() {
-    return null;
+    String result = new String();
+    result += "Cliente: " + cte.toString() + " \n ";
+    result += "Numero: " + numero + " \n ";
+    result += "Saldo: " + saldo + " \n ";
+    result += "Movimientos: \n ";
+    for (int i = 0; i < movimientos.size(); i++) {
+      result += " " + (i+1) + ". " + movimientos.get(i).toString() + " \n ";
+    }
+    return result;
   }
   
   public void setCliente(Cliente objetop) {
-    
+    cte = objetop;
   }
   
   public String hacerDeposito(double montop) {
-    return null;
+    Movimiento nuevoMovimiento = new Movimiento(montop, "Deposito");
+    movimientos.add(nuevoMovimiento);
+    saldo += montop;
+    return "-------Saldo Depositado-------";
   }
   
   public String hacerRetiro(double montop) {
-    return null;
+    if (saldo >= montop) {
+      Movimiento nuevoMovimiento = new Movimiento(montop, "Deposito");
+      saldo -= montop;
+      movimientos.add(nuevoMovimiento);
+      return "-------Saldo Retirado------";
+    } else {
+      return "****** NO TIENE FONDOS SUFICIENTES ******";
+    }
+  }
+
+  @Override
+  public boolean menorQue(Comparable otroObjetop) {
+    return false;
   }
 }

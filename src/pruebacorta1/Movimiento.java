@@ -5,6 +5,8 @@
  */
 package pruebacorta1;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -13,14 +15,26 @@ import java.util.Date;
  */
 class Movimiento {
   private static int cantidadInstancias;
+  private Date fechaMovimiento;
+  private double monto;
   private int numero;
   private String tipo;
-  private double monto;
-  private Date fechaMovimiento;
   
-  public Movimiento(String tipop, double montop){}
+  public Movimiento(double montop, String tipop){
+   numero = ++Movimiento.cantidadInstancias;
+   tipo = tipop;
+   monto = montop;
+   fechaMovimiento = new Date();
+  }
   
-  public String toStrong() {
-    return null;
+  @Override
+  public String toString() {
+    String result = new String();
+    result += " Numero: " + numero + " \n ";
+    result += " Tipo: " + tipo + " \n ";
+    result += " Monto: " + monto + " \n ";
+    DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy ");
+    result += "Fecha de Movimiento: "+dateFormat.format(fechaMovimiento)+" \n ";
+    return result;
   }
 }

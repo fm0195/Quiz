@@ -10,5 +10,5 @@ package pruebacorta1;
  * @author fm010
  */
 public interface Comparable {
-  public boolean menorQue(Comparable otroObjetop);
+  public abstract boolean menorQue(Comparable otroObjetop);
 }

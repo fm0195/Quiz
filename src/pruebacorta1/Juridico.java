@@ -13,9 +13,21 @@ public class Juridico extends Cliente {
   private String razonSocial;
   private String tipoNegocio;
 
-  public Juridico() {}
+  public Juridico(String razonSocialp, String tipoNegociop) {
+    super();
+    razonSocial = razonSocialp;
+    tipoNegocio = tipoNegociop;
+  }
 
   public String toString() {
-    return null;
+    String result = super.toString();
+    result += "Razon Social: " + razonSocial + " \n ";
+    result += "Tipo de Negocio: " + tipoNegocio + " \n ";
+    return result;
+  }
+
+  @Override
+  public boolean menorQue(Comparable otroObjetop) {
+    return false;
   }
 }

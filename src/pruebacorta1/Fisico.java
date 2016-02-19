@@ -14,9 +14,21 @@ public class Fisico extends Cliente {
   private String apellido2;
   private String nombre;
   
-  public Fisico(){}
+  public Fisico(String apellido1p, String apellido2p, String nombrep){
+    super();
+    apellido1 = apellido1p;
+    apellido2 = apellido2p;
+    nombre = nombrep;
+  }
   
   public String toString() {
-    return null;
+    String result = super.toString();
+    result += "Nombre: " + nombre + " " + apellido1 + " " + apellido2 + " \n ";
+    return result;
+  }
+
+  @Override
+  public boolean menorQue(Comparable otroObjetop) {
+    return false;
   }
 }
